@@ -5,7 +5,10 @@ import sys
 from pygame import *
 pygame.init()
 
-screen = pygame.display.set_mode((600, 500))
+screenx = 600
+screeny = 500
+
+screen = pygame.display.set_mode((screenx, screeny))
 
 myfont = pygame.font.Font(None, 60)
 
@@ -16,6 +19,8 @@ posx = 0
 posy = 0
 velx = 5
 vely = 5
+posval1 = 100
+posval2 = 100
 counter = 0
 width = random.randint(0, 10)
 
@@ -33,16 +38,16 @@ while True:
         posx += velx
         posy += vely
 
-        if posx > 600 or posx < 0:
+        if posx > screenx - posval1 or posx < 0:
             velx = -velx
             changeColor()
 
-        if posy > 500 or posy < 0:
+        if posy > screeny - posval2 or posy < 0:
             vely = -vely
             changeColor()
 
     width = 0
-    pos = posx, posy, 100, 100
+    pos = posx, posy, posval1, posval2
     pygame.draw.rect(screen, color, pos, width)
 
     pygame.display.update()
