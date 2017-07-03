@@ -5,13 +5,13 @@ import sys
 from pygame import *
 pygame.init()
 
-screen = pygame.display.set_mode((1600, 900))
+screen = pygame.display.set_mode((600, 500))
 
 myfont = pygame.font.Font(None, 60)
 
-white = 255, 255, 255
-blue = 0, 255, 255
+BLACK = 0, 0, 0
 color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
+
 counter = 0
 width = 8
 linex1 = random.randint(0, 600)
@@ -19,15 +19,22 @@ liney1 = random.randint(0, 500)
 linex2 = random.randint(0, 600)
 liney2 = random.randint(0, 500)
 
-textImage = myfont.render("Hello Pygame", True, white)
-
 def changeColor():
     color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
 
-screen.fill(blue)
+def changeLine():
+    linex1 = random.randint(0, 600)
+    liney1 = random.randint(0, 500)
+    linex2 = random.randint(0, 600)
+    liney2 = random.randint(0, 500)
+
+
+screen.fill(BLACK)
 
 while True:
     for event in pygame.event.get():
+        if event.type in (QUIT, KEYDOWN):
+            sys.exit()
         if counter < 1001:
             counter = counter + 1
         else:
@@ -35,5 +42,6 @@ while True:
                 if event.type in (QUIT, KEYDOWN):
                     sys.exit()
         changeColor()
-        pygame.draw.line(screen, color, (linex1, liney1), (linex2, liney2). width)
+        changeLine()
+        pygame.draw.line(screen, color, (linex1, liney1), (linex2, liney2), width)
         pygame.display.update()
