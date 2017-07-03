@@ -1,9 +1,11 @@
 import random
+import pygame
+import sys
 
 from pygame import *
 pygame.init()
 
-screen = pygame.display.set_mode((1600, 900))
+screen = pygame.display.set_mode((600, 500))
 
 myfont = pygame.font.Font(None, 60)
 
@@ -29,10 +31,15 @@ while True:
         screen.fill(blue)
         posx += velx
         posy += vely
-        if posx > 1600 or posx < 0:
+        if posx > 600 or posx < 0:
             velx = -velx
             changeColor()
-        if posy > 900:
+        if posy > 500 or posy < 0:
             vely = -vely
             changeColor()
-        pygame.display.update()
+
+    width = 0
+    pos = posx, posy, 100, 100
+    pygame.draw.rect(screen, color, pos, width)
+
+    pygame.display.update()
