@@ -16,24 +16,27 @@ posx = 0
 posy = 0
 velx = 5
 vely = 5
+counter = 0
+width = random.randint(0, 10)
 
 textImage = myfont.render("Hello Pygame", True, white)
 
 def changeColor():
     color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
 
-
-
 while True:
     for event in pygame.event.get():
         if event.type in (QUIT, KEYDOWN):
             sys.exit()
+
         screen.fill(blue)
         posx += velx
         posy += vely
+
         if posx > 600 or posx < 0:
             velx = -velx
             changeColor()
+
         if posy > 500 or posy < 0:
             vely = -vely
             changeColor()
