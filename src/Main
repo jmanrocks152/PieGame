@@ -20,9 +20,14 @@ linex2 = random.randint(0, 600)
 liney2 = random.randint(0, 500)
 
 def changeColor():
+    global color
     color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
 
 def changeLine():
+    global linex1
+    global liney1
+    global linex2
+    global liney2
     linex1 = random.randint(0, 600)
     liney1 = random.randint(0, 500)
     linex2 = random.randint(0, 600)
@@ -41,6 +46,7 @@ while True:
             while True:
                 if event.type in (QUIT, KEYDOWN):
                     sys.exit()
+
         changeColor()
         changeLine()
         pygame.draw.line(screen, color, (linex1, liney1), (linex2, liney2), width)
