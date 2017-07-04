@@ -13,7 +13,7 @@ BLACK = 0, 0, 0
 color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
 
 counter = 0
-width = 8
+WIDTH = 8
 linex1 = random.randint(0, 600)
 liney1 = random.randint(0, 500)
 linex2 = random.randint(0, 600)
@@ -43,5 +43,5 @@ while True:
                     sys.exit()
         changeColor()
         changeLine()
-        pygame.draw.line(screen, color, (linex1, liney1), (linex2, liney2), width)
+        pygame.draw.line(screen, color, (linex1, liney1), (linex2, liney2), WIDTH)
         pygame.display.update()
