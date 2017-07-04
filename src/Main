@@ -1,8 +1,10 @@
-import random
 import pygame
-import sys
 
 from pygame import *
+from math import *
+from random import *
+from sys import *
+
 pygame.init()
 
 screen = pygame.display.set_mode((600, 500))
@@ -10,24 +12,23 @@ screen = pygame.display.set_mode((600, 500))
 myfont = pygame.font.Font(None, 60)
 
 BLACK = 0, 0, 0
-color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
-
-counter = 0
+# color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
+color = 255, 255, 255
 WIDTH = 8
-linex1 = random.randint(0, 600)
-liney1 = random.randint(0, 500)
-linex2 = random.randint(0, 600)
-liney2 = random.randint(0, 500)
+majoraxisx1 = 0
+majoraxisy1 = 300
+majoraxisx2 = 500
+majoraxisy2 = 300
+minoraxisx1 = 250
+minoraxisy1 = 200
+minoraxisx2 = 250
+minoraxisy2 = 400
+positionx = abs(majoraxisx1 - majoraxisx2)
+positiony = abs(majoraxisy1 - majoraxisy2)
+positionWidth = 0.5 * abs(minoraxisx1-minoraxisx2)
+positionHeight = 0.5 * abs(minoraxisy1-minoraxisy2)
 
-def changeColor():
-    color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
-
-def changeLine():
-    linex1 = random.randint(0, 600)
-    liney1 = random.randint(0, 500)
-    linex2 = random.randint(0, 600)
-    liney2 = random.randint(0, 500)
-
+position = positionx, positiony, positionWidth, positionHeight
 
 screen.fill(BLACK)
 
@@ -35,13 +36,5 @@ while True:
     for event in pygame.event.get():
         if event.type in (QUIT, KEYDOWN):
             sys.exit()
-        if counter < 1001:
-            counter = counter + 1
-        else:
-            while True:
-                if event.type in (QUIT, KEYDOWN):
-                    sys.exit()
-        changeColor()
-        changeLine()
-        pygame.draw.line(screen, color, (linex1, liney1), (linex2, liney2), WIDTH)
-        pygame.display.update()
+        pygame.draw.arc(screen, color, position, math.radians(0), math.radians(180), WIDTH)
+
