@@ -14,6 +14,7 @@ myfont = pygame.font.Font(None, 60)
 
 white = 255, 255, 255
 blue = 0, 255, 255
+global color
 color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
 posx = 0
 posy = 0
@@ -21,7 +22,6 @@ velx = 5
 vely = 5
 posval1 = 100
 posval2 = 100
-counter = 0
 width = random.randint(0, 10)
 
 textImage = myfont.render("Hello Pygame", True, white)
