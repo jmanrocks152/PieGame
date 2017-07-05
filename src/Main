@@ -1,9 +1,7 @@
 import pygame
-
-from pygame import *
-from math import *
-from random import *
-from sys import *
+import math
+import random
+import sys
 
 pygame.init()
 
@@ -12,9 +10,7 @@ screen = pygame.display.set_mode((600, 500))
 myfont = pygame.font.Font(None, 60)
 
 BLACK = 0, 0, 0
-# color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
-color = 255, 255, 255
-WIDTH = 8
+color = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
 majoraxisx1 = 0
 majoraxisy1 = 300
 majoraxisx2 = 500
@@ -28,13 +24,24 @@ positiony = abs(majoraxisy1 - majoraxisy2)
 positionWidth = 0.5 * abs(minoraxisx1-minoraxisx2)
 positionHeight = 0.5 * abs(minoraxisy1-minoraxisy2)
 
+if positionWidth.is_integer():
+    print("This will not crash.")
+else:
+    if (positionWidth - math.trunc(positionWidth)) >= 0.5:
+        positionWidth = positionWidth.math.floor()
+
+
+
+
+
+
 position = positionx, positiony, positionWidth, positionHeight
 
 screen.fill(BLACK)
 
 while True:
     for event in pygame.event.get():
-        if event.type in (QUIT, KEYDOWN):
+        if event.type in (pygame.QUIT, pygame.KEYDOWN):
             sys.exit()
-        pygame.draw.arc(screen, color, position, math.radians(0), math.radians(180), WIDTH)
+        pygame.draw.arc(screen, color, position, math.radians(0), math.radians(180), positionWidth)
 
