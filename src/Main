@@ -27,8 +27,18 @@ positionHeight = 0.5 * abs(minoraxisy1-minoraxisy2)
 if positionWidth.is_integer():
     print("This will not crash.")
 else:
-    if (positionWidth - math.trunc(positionWidth)) >= 0.5:
+    if (positionWidth - int(positionWidth)) >= 0.5:
+        positionWidth = positionWidth.math.ceiling()
+    else:
         positionWidth = positionWidth.math.floor()
+
+if positionHeight.is_integer():
+    print("This will not crash.")
+else:
+    if (positionHeight - int(positionHeight)) >= 0.5:
+        positionHeight = positionHeight.math.ceiling()
+    else:
+        positionHeight.math.floor()
 
 
 
